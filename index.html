@@ -1,0 +1,325 @@
+<!--
+Project Folder Structure:
+restoreno-site/
+├── index.html           # Main HTML file
+├── assets/              # Images and media
+│   ├── logo.png         # Company logo
+│   ├── kitchen-hood.jpg
+│   ├── bathroom-plumbing.jpg
+│   ├── electrical-lighting.jpg
+│   ├── cctv-security.jpg
+│   ├── painting-drywall.jpg
+│   └── cleaning-organization.jpg
+└── js/                  # JavaScript files
+    └── modal.js         # Modal toggle script
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restroreno - Expert Handyman Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <!-- Navigation -->
+  <header class="bg-white shadow py-4">
+  <div class="container mx-auto px-6 flex items-center justify-between">
+    <!-- Logo container -->
+    <div class="flex-shrink-0 bg-blue-50 p-2 rounded-lg">
+      <img
+        src="C:\Users\harsh\OneDrive\Desktop\Restroreno\assets\logo.png"
+        alt="Restroreno Logo"
+        class="h-40 w-200 object-contain"
+      />
+    </div>
+    <!-- Nav links -->
+    <nav class="space-x-8 text-lg font-medium text-gray-700">
+      <a href="#home"  class="hover:text-blue-600">Home</a>
+      <a href="#services" class="hover:text-blue-600">Services</a>
+      <a href="#pricing" class="hover:text-blue-600">Pricing</a>
+      <a href="#about" class="hover:text-blue-600">About</a>
+      <a href="#contact" class="hover:text-blue-600">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+  <!-- Hero -->
+<!-- Hero with Slider -->
+<section id="home" class="relative bg-blue-600 text-white">
+  <!-- Slides container -->
+  <div class="relative overflow-hidden h-80 md:h-96">
+    <!-- Slide 1 -->
+    <div class="slide absolute inset-0 flex flex-col items-center justify-center px-6 opacity-100 transition-opacity duration-700" data-index="0">
+      <h2 class="text-3xl md:text-5xl font-bold mb-2">Our Latest Renovation Showcase</h2>
+      <p class="text-lg md:text-xl">See how we transformed kitchens & bathrooms.</p>
+    </div>
+    <!-- Slide 2 -->
+    <div class="slide absolute inset-0 flex flex-col items-center justify-center px-6 opacity-0 transition-opacity duration-700" data-index="1">
+      <h2 class="text-3xl md:text-5xl font-bold mb-2">Spring Special: 10% Off</h2>
+      <p class="text-lg md:text-xl">Book any job over $500 and save today.</p>
+    </div>
+    <!-- Slide 3 -->
+    <div class="slide absolute inset-0 flex flex-col items-center justify-center px-6 opacity-0 transition-opacity duration-700" data-index="2">
+      <h2 class="text-3xl md:text-5xl font-bold mb-2">Customer Success Stories</h2>
+      <p class="text-lg md:text-xl">Read raving reviews from our happy clients.</p>
+    </div>
+  </div>
+
+  <!-- Prev/Next buttons -->
+  <button id="prevSlide"
+          class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 text-blue-600 p-2 rounded-full z-20">
+    &#10094;
+  </button>
+  <button id="nextSlide"
+          class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 text-blue-600 p-2 rounded-full z-20">
+    &#10095;
+  </button>
+
+  <!-- Call-to-action overlay -->
+  <div class="absolute inset-x-0 bottom-8 text-center z-10">
+    <a href="#contact"
+       class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100">
+      Get a Free Quote
+    </a>
+  </div>
+</section>
+
+<script>
+  // hero-slider.js logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let current = 0;
+
+    function goTo(n) {
+      slides.forEach((s, i) => {
+        s.style.opacity = i === n ? '1' : '0';
+      });
+      current = n;
+    }
+
+    document.getElementById('nextSlide').onclick = () => {
+      goTo((current + 1) % slides.length);
+    };
+    document.getElementById('prevSlide').onclick = () => {
+      goTo((current - 1 + slides.length) % slides.length);
+    };
+
+    // auto-advance every 5s
+    setInterval(() => document.getElementById('nextSlide').click(), 5000);
+  });
+</script>
+
+  <!-- Services -->
+  <section id="services" class="py-16">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-bold text-center mb-12">Our Services</h3>
+      <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div class="bg-white rounded-2xl shadow p-6">
+          <img src="C:\Users\harsh\OneDrive\Desktop\Restroreno\assets\cctv-security.png" alt="CCTV Security" class="w-full h-80 object-cover rounded-lg mb-4" />
+          <h4 class="text-xl font-semibold mb-2">CCTV & Security</h4>
+          <ul class="list-disc list-inside text-gray-600 mb-4">
+            <li>2TB NVR setup - $999</li>
+            <li>4TB NVR setup - $1299</li>
+            <li>4–8 camera packages - $500–3000</li>
+            <li>5MP & 4K options</li>
+          </ul>
+          <button data-modal-target="modal-cctv" class="text-blue-600 font-semibold hover:underline">Learn More →</button>
+        </div>
+        <div class="bg-white rounded-2xl shadow p-6">
+          <img src="C:\Users\harsh\OneDrive\Desktop\Restroreno\assets\kitchen-hood.png" alt="Kitchen Hood Repair" class="w-full h-80 object-cover rounded-lg mb-4" />
+          <h4 class="text-xl font-semibold mb-2">Kitchen & Hood Repair</h4>
+          <ul class="list-disc list-inside text-gray-600 mb-4">
+            <li>Fan Motor repair - $125</li>
+            <li>Belt & Blade replacement - $49</li>
+            <li>Bearing service - $99</li>
+            <li>Light bulb installation - $29</li>
+          </ul>
+          <button data-modal-target="modal-kitchen" class="text-blue-600 font-semibold hover:underline">Learn More →</button>
+        </div>
+        <div class="bg-white rounded-2xl shadow p-6">
+          <img src="C:\Users\harsh\OneDrive\Desktop\Restroreno\assets\bathroom-plumbing.png" alt="Bathroom Plumbing" class="w-full h-80 object-cover rounded-lg mb-4" />
+          <h4 class="text-xl font-semibold mb-2">Bathroom Plumbing</h4>
+          <ul class="list-disc list-inside text-gray-600 mb-4">
+            <li>Toilet unclog & running repair - $89</li>
+            <li>Leaking pipe fix - $79</li>
+            <li>Fixture & dispenser install - $49</li>
+            <li>Mirror & door hardware - $59</li>
+          </ul>
+          <button data-modal-target="modal-bath" class="text-blue-600 font-semibold hover:underline">Learn More →</button>
+        </div>
+        <div class="bg-white rounded-2xl shadow p-6">
+          <img src="C:\Users\harsh\OneDrive\Desktop\Restroreno\assets\electrical-lighting.png" alt="Electrical and Lighting" class="w-full h-80 object-cover rounded-lg mb-4" />
+          <h4 class="text-xl font-semibold mb-2">Electrical & Lighting</h4>
+          <ul class="list-disc list-inside text-gray-600 mb-4">
+            <li>Pot & chandelier install - from $69</li>
+            <li>Outlet & wiring upgrades - $49</li>
+            <li>Speaker & POS wiring - $79</li>
+            <li>Bulb replacement & repairs - $19</li>
+          </ul>
+          <button data-modal-target="modal-electrical" class="text-blue-600 font-semibold hover:underline">Learn More →</button>
+        </div>
+        <div class="bg-white rounded-2xl shadow p-6">
+          <img src="C:\Users\harsh\OneDrive\Desktop\Restroreno\assets\painting-drywall.png" alt="Painting and Drywall" class="w-full h-80 object-cover rounded-lg mb-4" />
+          <h4 class="text-xl font-semibold mb-2">Painting & Drywall</h4>
+          <ul class="list-disc list-inside text-gray-600 mb-4">
+            <li>Basic painting - $2.25/sqft</li>
+            <li>Comprehensive painting - $2.75/sqft</li>
+            <li>Drywall install & finishing - from $1.25/sqft</li>
+            <li>Drywall patching - $29/49/69</li>
+          </ul>
+          <button data-modal-target="modal-paint" class="text-blue-600 font-semibold hover:underline">Learn More →</button>
+        </div>
+        <div class="bg-white rounded-2xl shadow p-6">
+          <img src="/assets/cleaning-organization.jpg" alt="Cleaning and Organization" class="w-full h-40 object-cover rounded-lg mb-4" />
+          <h4 class="text-xl font-semibold mb-2">Cleaning & Organization</h4>
+          <ul class="list-disc list-inside text-gray-600 mb-4">
+            <li>Deep clean - $20/hr</li>
+            <li>Hood & kitchen clean - $89</li>
+            <li>Equipment organization - $15/hr</li>
+            <li>Manpower support (5-hr min) - $100/session</li>
+          </ul>
+          <button data-modal-target="modal-clean" class="text-blue-600 font-semibold hover:underline">Learn More →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Policy -->
+  <section id="pricing" class="bg-yellow-100 py-12">
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="text-2xl font-bold mb-4">Our Extra Charge Policy</h3>
+      <p class="mb-2">If the overall work cost is &lt;$125, an additional fee of <strong>$99</strong> applies.</p>
+      <p class="mb-2">For work costing between $125 and $249, an additional fee of <strong>$49</strong> applies.</p>
+      <p class="mb-6">For projects over $249, <strong>no extra charges</strong>—save more when you invest in larger jobs!</p>
+      <p class="text-lg font-semibold">Book today and spend over <strong>$249</strong> to enjoy zero extra fees on any project!</p>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="about" class="bg-white py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-4">Why Choose Restoreno?</h3>
+      <p class="max-w-2xl mx-auto text-gray-600 mb-8">
+        Licensed, insured, and backed by years of experience. We deliver quality workmanship,
+        transparent pricing, and 24/7 support for all your home improvement needs.
+      </p>
+      <div class="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6">
+        <div>
+          <h4 class="text-xl font-semibold">24/7 Availability</h4>
+          <p class="text-gray-600">Always here when you need us.</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-semibold">Satisfaction Guarantee</h4>
+          <p class="text-gray-600">Quality work, every time.</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-semibold">Free Estimates</h4>
+          <p class="text-gray-600">No surprises on your bill.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-bold text-center mb-8">Get in Touch</h3>
+      <form class="max-w-xl mx-auto space-y-4">
+        <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg border" />
+        <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg border" />
+        <textarea rows="4" placeholder="Describe Your Project" class="w-full p-3 rounded-lg border"></textarea>
+        <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700">
+          Request Estimate
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Modals -->
+  <div id="modal-kitchen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full relative">
+      <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-800" data-modal-close>&times;</button>
+      <h4 class="text-2xl font-semibold mb-4">Kitchen & Hood Repair Details</h4>
+      <ul class="list-disc list-inside text-gray-700">
+        <li>Fan Motor repair: <strong>$125</strong></li>
+        <li>Belt & Blade replacement: <strong>$49</strong></li>
+        <li>Bearing service: <strong>$99</strong></li>
+        <li>Light bulb installation: <strong>$29</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div id="modal-bath" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full relative">
+      <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-800" data-modal-close>&times;</button>
+      <h4 class="text-2xl font-semibold mb-4">Bathroom Plumbing Details</h4>
+      <ul class="list-disc list-inside text-gray-700">
+        <li>Toilet unclog & running repair: <strong>$89</strong></li>
+        <li>Leaking pipe fix: <strong>$79</strong></li>
+        <li>Fixture & dispenser install: <strong>$49</strong></li>
+        <li>Mirror & door hardware: <strong>$59</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div id="modal-electrical" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full relative">
+      <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-800" data-modal-close>&times;</button>
+      <h4 class="text-2xl font-semibold mb-4">Electrical & Lighting Details</h4>
+      <ul class="list-disc list-inside text-gray-700">
+        <li>Pot & chandelier install: <strong>from $69</strong></li>
+        <li>Outlet & wiring upgrades: <strong>$49</strong></li>
+        <li>Speaker & POS wiring: <strong>$79</strong></li>
+        <li>Bulb replacement & repairs: <strong>$19</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div id="modal-cctv" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full relative">
+      <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-800" data-modal-close>&times;</button>
+      <h4 class="text-2xl font-semibold mb-4">CCTV & Security Details</h4>
+      <ul class="list-disc list-inside text-gray-700">
+        <li>2TB NVR setup: <strong>$999</strong></li>
+        <li>4TB NVR setup: <strong>$1299</strong></li>
+        <li>4–8 camera packages: <strong>$500–3000</strong></li>
+        <li>5MP & 4K options available</li>
+      </ul>
+    </div>
+  </div>
+  <div id="modal-paint" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full relative">
+      <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-800" data-modal-close>&times;</button>
+      <h4 class="text-2xl font-semibold mb-4">Painting & Drywall Details</h4>
+      <ul class="list-disc list-inside text-gray-700">
+        <li>Basic painting: <strong>$2.25/sqft</strong></li>
+        <li>Comprehensive painting: <strong>$2.75/sqft</strong></li>
+        <li>Drywall install & finishing: <strong>from $1.25/sqft</strong></li>
+        <li>Drywall patching (small/med/large): <strong>$29/$49/$69</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div id="modal-clean" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full relative">
+      <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-800" data-modal-close>&times;</button>
+      <h4 class="text-2xl font-semibold mb-4">Cleaning & Organization Details</h4>
+      <ul class="list-disc list-inside text-gray-700">
+        <li>Deep clean: <strong>$20/hr</strong></li>
+        <li>Hood & kitchen clean: <strong>$89</strong></li>
+        <li>Equipment organization: <strong>$15/hr</strong></li>
+        <li>Manpower support (5-hr min): <strong>$100/session</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-6 text-center">
+      <p>&copy; 2025 Restoreno. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modal Script -->
+  <script src="js/modal.js"></script>
+
+</body>
+</html>
