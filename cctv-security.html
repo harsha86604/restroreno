@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>CCTV & Security – RestoRepair</title>
+  <title>CCTV & Security – RenoNRepair</title>
   <script src="https://cdn.tailwindcss.com"></script>
+   <!-- Favicon: .ico for browsers -->
+  <link rel="icon" href="assets/favicon192.ico" type="image/x-icon">
+
+  <!-- Optional PNG icons for modern devices -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
-
-  <!-- Header (copy from index.html) -->
+<!-- Header (copy from index.html) -->
   <header class="bg-white shadow py-4">
     <div class="container mx-auto px-6 flex items-center justify-between">
       <div class="flex-shrink-0 bg-orange-50 p-2 rounded-lg">
@@ -24,15 +31,78 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="bg-orange-600 text-white py-20">
-    <div class="container mx-auto px-6 text-center">
-      <h1 class="text-4xl font-bold mb-4">CCTV & Security</h1>
-      <p class="max-w-2xl mx-auto mb-8">
-        Keep your property safe and under watch—our surveillance solutions give you peace of mind 24/7.
-      </p>
+
+<!-- Hero with Slider (for CCTV & Security page) -->
+<section id="home" class="relative bg-orange-600 text-white">
+  <!-- Slides container -->
+  <div class="relative overflow-hidden h-80 md:h-96">
+    <!-- Slide 1 -->
+    <div
+      class="slide absolute inset-0 flex flex-col items-center justify-center px-6 opacity-100 transition-opacity duration-700"
+      data-index="0"
+    >
+      <h2 class="text-3xl md:text-5xl font-bold mb-2">24/7 CCTV Surveillance</h2>
+      <p class="text-lg md:text-xl">Crystal-clear HD cameras guarding every corner.</p>
     </div>
-  </section>
+    <!-- Slide 2 -->
+    <div
+      class="slide absolute inset-0 flex flex-col items-center justify-center px-6 opacity-0 transition-opacity duration-700"
+      data-index="1"
+    >
+      <h2 class="text-3xl md:text-5xl font-bold mb-2">Remote Viewing</h2>
+      <p class="text-lg md:text-xl">Watch live feeds from your phone or desktop, anywhere.</p>
+    </div>
+    <!-- Slide 3 -->
+    <div
+      class="slide absolute inset-0 flex flex-col items-center justify-center px-6 opacity-0 transition-opacity duration-700"
+      data-index="2"
+    >
+      <h2 class="text-3xl md:text-5xl font-bold mb-2">AI-Powered Alerts</h2>
+      <p class="text-lg md:text-xl">Instant notifications for motion, sound, and face detection.</p>
+    </div>
+  </div>
+
+  <!-- Prev/Next buttons -->
+  <button
+    id="prevSlide"
+    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 text-orange-600 p-2 rounded-full z-20"
+  >
+    &#10094;
+  </button>
+  <button
+    id="nextSlide"
+    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 text-orange-600 p-2 rounded-full z-20"
+  >
+    &#10095;
+  </button>
+
+  <!-- Call-to-action overlay -->
+  <div class="absolute inset-x-0 bottom-8 text-center z-10">
+    <a
+      href="index.html#contact"
+      class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100"
+    >
+      Get a Free Quote
+    </a>
+  </div>
+</section>
+
+<script>
+  // hero-slider.js (same as on home page)
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let current = 0;
+    function goTo(n) {
+      slides.forEach((s, i) => s.style.opacity = i === n ? '1' : '0');
+      current = n;
+    }
+    document.getElementById('nextSlide').onclick = () =>
+      goTo((current + 1) % slides.length);
+    document.getElementById('prevSlide').onclick = () =>
+      goTo((current - 1 + slides.length) % slides.length);
+    setInterval(() => document.getElementById('nextSlide').click(), 5000);
+  });
+</script>
 
   <!-- Details -->
   <section class="py-16">
@@ -42,67 +112,105 @@
            class="h-80 max-w-lg mx-auto rounded-lg shadow mb-8">
       <h2 class="text-2xl font-bold mb-4">What We Offer</h2>
       <ul class="list-disc list-inside space-y-2 text-gray-700 mb-8">
-        <li><strong>2TB NVR Setup</strong> – store weeks of high-res footage</li>
-        <li><strong>4TB NVR Setup</strong> – extended recording capacity</li>
-        <li><strong>4–22 Camera Packages</strong> – flexible coverage options</li>
+        <li><strong>1 TB –24 TB Hard drives</strong> – For extended recording capacity</li>
         <li><strong>5MP & 4K Cameras</strong> – crystal-clear video day or night</li>
+        <li><strong>Remote Access</strong> – Monitor your property from anywhere</li>
+        <li><strong> Professional Installation</strong> - No messy Wires</li>
+        <li><strong> Remote access via mobile app</strong>-24/7 Monitoring and remote access |  Fast online support and warranty</li>
+        <li><strong>AI Features</strong> – Smart detection, alerts, and notifications</li>
+    <li>
+        <strong>Camera Types</strong> – Bullet, Dome, PTZ, Turret, and more
+    </li>
+    <li>
+     <strong>Camera Quality</strong> – 
+<ul class="list-disc list-inside ml-6">
+  <li>Light & siren active deterrence</li>
+  <li>Full colour, smart illumination</li>
+  <li>License plate detection & face detection</li>
+  <li>Built-in microphone & speaker for two-way audio</li>
+  <li>Support AI by camera</li>
+  <li>IP67 – water resistant and suitable for all weather conditions</li>
+</ul>
+</li>
+   
+</ul>
+
+    <div class="bg-brown-100 border border-brown-400 p-6 rounded-lg mb-8">
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <strong>Included</strong> – <ul class="list-disc list-inside ml-6">
+  <li>Cameras</li>
+  <li>NVR</li>
+  <li>Hard Drive</li>
+  <li>Wire</li>
+  <li>Mounts</li>
+  <li>Installation & Setup</li>
+</ul>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
 
       </ul>
 
       <!-- Pricing Table -->
-      <table class="table-auto w-full mb-12 border-collapse">
-        <thead class="bg-green-600 text-white">
-          <tr>
-            <th class="px-4 py-2 text-left">Area (sqft)</th>
-            <th class="px-4 py-2 text-left">Suggested Cameras</th>
-            <th class="px-4 py-2 text-left">Includes</th>
-            <th class="px-4 py-2 text-left">5 MP Price</th>
-            <th class="px-4 py-2 text-left">4 K Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="bg-white">
-            <td class="border px-4 py-2">&lt; 500</td>
-            <td class="border px-4 py-2">4</td>
-            <td class="border px-4 py-2">Mount + cables + 1TB Storage</td>
-            <td class="border px-4 py-2">$899</td>
-            <td class="border px-4 py-2">$1099</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="border px-4 py-2">500 – 1000</td>
-            <td class="border px-4 py-2">6</td>
-            <td class="border px-4 py-2">Mount + cables+ 2TB Storage</td>
-            <td class="border px-4 py-2">$999</td>
-            <td class="border px-4 py-2">$1199</td>
-          </tr>
-          <tr class="bg-white">
-            <td class="border px-4 py-2">1000 – 1800</td>
-            <td class="border px-4 py-2">8</td>
-            <td class="border px-4 py-2">Mount + cables+ 4TB Storage</td>
-            <td class="border px-4 py-2">$1299</td>
-            <td class="border px-4 py-2">$1499</td>
-          </tr>
-                    <tr class="bg-white">
-            <td class="border px-4 py-2">1800 – 3000</td>
-            <td class="border px-4 py-2">12</td>
-            <td class="border px-4 py-2">Mount + cables+ 4TB Storage</td>
-            <td class="border px-4 py-2">$1699</td>
-            <td class="border px-4 py-2">$1999</td>
-          </tr>          <tr class="bg-white">
-            <td class="border px-4 py-2">3000 - 3600</td>
-            <td class="border px-4 py-2">16</td>
-            <td class="border px-4 py-2">Mount + cables+ 4TB Storage</td>
-            <td class="border px-4 py-2">$2999</td>
-            <td class="border px-4 py-2">$3399</td>
-          </tr>          <tr class="bg-white">
-            <td class="border px-4 py-2">3600 - 4500</td>
-            <td class="border px-4 py-2">22</td>
-            <td class="border px-4 py-2">Mount + cables+ 5TB Storage</td>
-            <td class="border px-4 py-2">$3899</td>
-            <td class="border px-4 py-2">$4299</td>
-          </tr>
-        </tbody>
-      </table>
+<table class="table-auto w-full mb-12 border-collapse">
+  <thead class="bg-green-300 text-white">
+    <tr>
+      <th class="px-4 py-2 text-left">Area (sqft)</th>
+      <th class="px-4 py-2 text-left">Suggested Cameras</th>
+      <th class="px-4 py-2 text-left">Includes</th>
+      <th class="px-4 py-2 text-left">5 MP Price</th>
+      <th class="px-4 py-2 text-left">4 K Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="bg-white even:bg-green-50">
+      <td class="border px-4 py-2">< 500</td>
+      <td class="border px-4 py-2">4</td>
+      <td class="border px-4 py-2">Mount + cables + 1 TB Storage</td>
+      <td class="border px-4 py-2">$999</td>
+      <td class="border px-4 py-2">$1,199</td>
+    </tr>
+    <tr class="bg-white even:bg-green-50">
+      <td class="border px-4 py-2">500 – 1,000</td>
+      <td class="border px-4 py-2">6</td>
+      <td class="border px-4 py-2">Mount + cables + 2 TB Storage</td>
+      <td class="border px-4 py-2">$1,299</td>
+      <td class="border px-4 py-2">$1,499</td>
+    </tr>
+    <tr class="bg-white even:bg-green-50">
+      <td class="border px-4 py-2">1,000 – 1,800</td>
+      <td class="border px-4 py-2">8</td>
+      <td class="border px-4 py-2">Mount + cables + 4 TB Storage</td>
+      <td class="border px-4 py-2">$1,699</td>
+      <td class="border px-4 py-2">$1,999</td>
+    </tr>
+    <tr class="bg-white even:bg-green-50">
+      <td class="border px-4 py-2">1,800 – 3,000</td>
+      <td class="border px-4 py-2">12</td>
+      <td class="border px-4 py-2">Mount + cables + 4 TB Storage</td>
+      <td class="border px-4 py-2">$2,499</td>
+      <td class="border px-4 py-2">$2,799</td>
+    </tr>
+    <tr class="bg-white even:bg-green-50">
+      <td class="border px-4 py-2">3,000 – 3,600</td>
+      <td class="border px-4 py-2">16</td>
+      <td class="border px-4 py-2">Mount + cables + 4 TB Storage</td>
+      <td class="border px-4 py-2">$2,999</td>
+      <td class="border px-4 py-2">$3,399</td>
+    </tr>
+    <tr class="bg-white even:bg-green-50">
+      <td class="border px-4 py-2">3,600 – 4,500</td>
+      <td class="border px-4 py-2">22</td>
+      <td class="border px-4 py-2">Mount + cables + 5 TB Storage</td>
+      <td class="border px-4 py-2">$3,899</td>
+      <td class="border px-4 py-2">$4,299</td>
+    </tr>
+  </tbody>
+</table>
+
         <p class="text-gray-700 mb-8">
             *Prices include installation and setup. Additional charges may apply for complex installations.
         </p>
@@ -140,7 +248,7 @@
   <!-- Footer (copy from index.html) -->
   <footer class="bg-gray-800 text-white py-8">
     <div class="container mx-auto px-6 text-center">
-      <p>&copy; 2025 RestoRepair. All rights reserved.</p>
+      <p>&copy; 2025 RenoNRepair All rights reserved.</p>
     </div>
   </footer>
 
