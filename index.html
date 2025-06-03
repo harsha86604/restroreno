@@ -289,7 +289,6 @@ restoreno-site/
       </div>
     </div>
   </section>
-
 <!-- Contact -->
 <section id="contact" class="py-16 bg-gray-50">
   <div class="container mx-auto px-6">
@@ -343,7 +342,7 @@ restoreno-site/
   </div>
 </section>
 
-<!-- Your two helper functions -->
+<!-- Helper functions -->
 <script>
   function generateMailTo() {
     const name    = encodeURIComponent(document.getElementById('cName').value);
@@ -359,13 +358,12 @@ restoreno-site/
 
   function generateWhatsAppLink() {
     const name    = encodeURIComponent(document.getElementById('cName').value);
+    const email   = encodeURIComponent(document.getElementById('cEmail').value);
     const project = encodeURIComponent(document.getElementById('cProj').value);
 
-    // Put your full WhatsApp number here, no "+", no dashes
-    const myNumber = '14377344379';
-    const message  = `Hi, I'm ${name} and my mail is%0AEmail: ${email} I'd like an estimate: ${project}`;
-    const body    = `Name: ${name}%0AEmail: ${email}%0A%0AProject details:%0A${project}`;
-
+    // Your full WhatsApp number here, no “+” or dashes:
+    const myNumber = '14375999989';
+    const message  = `Hi, I'm ${name}.%0AEmail: ${email}%0AI'd like an estimate: ${project}`;
 
     return `https://wa.me/${myNumber}?text=${message}`;
   }
@@ -450,7 +448,7 @@ restoreno-site/
   <!-- Footer -->
   <footer class="bg-gray-800 text-white py-8">
     <div class="container mx-auto px-6 text-center">
-      <p>&copy; 2025 RenoNRepair. All rights reserved.</p>
+      <p>&copy; 2024 RenoNRepair. All rights reserved.</p>
     </div>
   </footer>
 
